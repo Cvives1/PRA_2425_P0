@@ -20,6 +20,7 @@ public:
     void mover(double nuevoX, double nuevoY, double nuevoZ);
     void coger();
     void soltar();
+
 };
 
 #endif
