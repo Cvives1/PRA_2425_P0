@@ -1,4 +1,5 @@
 all: BRAZO
+
 BRAZO: BrazoRobotico.o main.o
 	g++ BrazoRobotico.o main.o -o BRAZO
 
