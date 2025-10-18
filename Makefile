@@ -1,25 +1,15 @@
-# Makefile para BrazoRobotico
-
-CXX = g++
-CXXFLAGS = -Wall -std=c++17
-
-TARGET = brazo
-OBJS = main.o BrazoRobotico.o
-
-all: $(TARGET)
-
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
-
-main.o: main.cpp BrazoRobotico.h
-	$(CXX) $(CXXFLAGS) -c main.cpp
+all: BRAZO
+BRAZO: BrazoRobotico.o main.o
+	g++ BrazoRobotico.o main.o -o BRAZO
 
 BrazoRobotico.o: BrazoRobotico.cpp BrazoRobotico.h
-	$(CXX) $(CXXFLAGS) -c BrazoRobotico.cpp
+	g++ -c BrazoRobotico.cpp
+
+main.o: main.cpp BrazoRobotico.h
+	g++ -c main.cpp
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f *.o BRAZO
 
-test: $(TARGET)
-	./$(TARGET)
-
+test: BRAZO
+	./BRAZO
